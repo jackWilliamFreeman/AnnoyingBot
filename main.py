@@ -29,6 +29,8 @@ def set_starter_threshold():
 @client.event
 async def on_message(message):
     annoyance_threshold = random.uniform(0, 1)
+    insultee = 'Ian'
+    insults = [insultee + ' you have bad hair', insultee+' you smell', insultee+' your sense of fashion is bad', insultee+' is not masculine']
 
     if message.author == client.user:
         return
@@ -37,9 +39,10 @@ async def on_message(message):
         global globalFactor
         globalFactor = await handle_annoyingbot_commands(message, globalFactor)
 
-    if message.author.id == 550616372120387585 and annoyance_threshold <= globalFactor:
+    insult = random.choice(insults)
+    if message.author.id == 368751796945944577 and annoyance_threshold <= globalFactor:
         print('annoying target')
-        await message.channel.send('Ian you smell')
+        await message.channel.send(insult)
 
     if message.author.id == 752655419486371982:
         print('Encouraging Drinking')
